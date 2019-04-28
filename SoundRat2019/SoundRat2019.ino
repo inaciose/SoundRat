@@ -1,15 +1,14 @@
 //
-// Robot 1 - Robot based in a State machine that deviate from obstacles.
-//  Working!!
-/* Function: It deviates from obstacles.
-   Changes from R1: Don't go to STATE_STOP when change mouse_state.
-                    Smaller motor buffer (4)
-                    motor_direction() changed. (0; -SPEED_HIGH); (-SPEED_HIGH; 0)
-                    Reduced US distance detection
-                    IR tower fixed position. Robot rotate to find IR tower
-                    Two speeds! (NORMAL and SPEEDY)       
+//  Robot 1 - Robot based in a State machine that deviate from obstacles.
+//  Working??
+/*  Function: It deviates from obstacles.
+    Change log: 
+    Features:
+    motor_direction() (0; -SPEED_HIGH); (-SPEED_HIGH; 0)
+    IR tower fixed position. Robot rotate to find IR tower
+    Two speeds! (NORMAL and SPEEDY)       
 */
-#include "Microrato2018_R8.h"
+#include "SoundRat2019.h"
 
 void setup() {
   //Inicialize VAR
@@ -56,8 +55,8 @@ void setup() {
 
   // IR Floor sensors
   pinMode(IR_FLOOR_PIN_S0,INPUT);
-//  pinMode(IR_FLOOR_PIN_S1,INPUT);
-////  pinMode(IR_FLOOR_PIN_S2,INPUT);
+  pinMode(IR_FLOOR_PIN_S1,INPUT);
+  pinMode(IR_FLOOR_PIN_S2,INPUT);
 
   Serial.println("Waiting for start (Push Start button)");
   //Wait for Start button. Debounce
@@ -75,11 +74,9 @@ void setup() {
   ///mouse_state = STATE_ROTATE_IR_SCAN;
 }// SETUP() END
 
-
 long tran2enc_pulse(long x){
   return(x * WHEEL_IMP_ROT / WHEEL_PERIMETER);
 }
-
 
 #define if_test_mode 0
 void loop() {
@@ -704,4 +701,3 @@ if(mouse_state != last_mouse_state){
     }
   }  
 }
-

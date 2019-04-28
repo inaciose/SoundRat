@@ -4,7 +4,8 @@
 // DEFINE ***************************************************
 // CONFIGURATION
 
-///#define SPEEDY
+///
+#define SPEEDY
 #ifdef SPEEDY
   #define MAX_SPEED 255
   #define TICK_TIME_STATE_MACHINE 6  //(ms)
